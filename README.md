@@ -2,29 +2,29 @@
 
 Developer utility module for Magento 2.4.x that creates database views aggregating EAV entity data with attribute values in JSON format.
 
-## ⚠️ WARNING: Development Tool
-
-**This module is designed for development and debugging.**
-
-While production-installable, consider these factors:
-- Database views may impact performance on large datasets
-- JSON aggregation is resource-intensive for complex queries
-- Intended for temporary debugging, not permanent production use
-- No query optimization beyond entity_id lookups
-
-**Recommended Use:** Enable in development/staging, disable in production after debugging.
+> [!IMPORTANT]
+> 
+> **This module is designed for development and debugging.**
+> 
+> While production-installable, consider these factors:
+> - Database views may impact performance on large datasets
+> - JSON aggregation is resource-intensive for complex queries
+> - Intended for temporary debugging, not permanent production use
+> - No query optimization beyond entity_id lookups
+> 
+> **Suggested Use:** Install in development/staging only. Do not write code that would use these views on a live site.
 
 ## Requirements
 
 - **Magento:** 2.4.x
-- **PHP:** 8.2, 8.3, or 8.4
+- **PHP:** 8.1+
 - **Database:** MySQL 5.7+ or MariaDB 10.2.3+
-  - Requires `JSON_OBJECTAGG` function support
+  - Requires MySQL `JSON` function support
 
 ## Installation
 
 ```bash
-composer require mage-os/eav-debug-views
+composer require --dev mage-os/eav-debug-views
 bin/magento setup:upgrade
 ```
 
