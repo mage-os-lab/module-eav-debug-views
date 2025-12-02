@@ -123,6 +123,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$productDecimal} eavd
                 INNER JOIN {$eavAttribute} ea ON eavd.attribute_id = ea.attribute_id
                 GROUP BY eavd.entity_id
+                ORDER BY ea.attribute_code asc, eavd.store_id asc
             ),
             eav_datetime AS (
                 SELECT
@@ -134,6 +135,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$productDatetime} eavdt
                 INNER JOIN {$eavAttribute} ea ON eavdt.attribute_id = ea.attribute_id
                 GROUP BY eavdt.entity_id
+                ORDER BY ea.attribute_code asc, eavdt.store_id asc
             ),
             eav_int AS (
                 SELECT
@@ -145,6 +147,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$productInt} eavi
                 INNER JOIN {$eavAttribute} ea ON eavi.attribute_id = ea.attribute_id
                 GROUP BY eavi.entity_id
+                ORDER BY ea.attribute_code asc, eavi.store_id asc
             ),
             eav_text AS (
                 SELECT
@@ -156,6 +159,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$productText} eavt
                 INNER JOIN {$eavAttribute} ea ON eavt.attribute_id = ea.attribute_id
                 GROUP BY eavt.entity_id
+                ORDER BY ea.attribute_code asc, eavt.store_id asc
             ),
             eav_varchar AS (
                 SELECT
@@ -167,6 +171,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$productVarchar} eavv
                 INNER JOIN {$eavAttribute} ea ON eavv.attribute_id = ea.attribute_id
                 GROUP BY eavv.entity_id
+                ORDER BY ea.attribute_code asc, eavv.store_id asc
             )
         SELECT
             e.*,
@@ -223,6 +228,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$categoryDecimal} eavd
                 INNER JOIN {$eavAttribute} ea ON eavd.attribute_id = ea.attribute_id
                 GROUP BY eavd.entity_id
+                ORDER BY ea.attribute_code asc, eavd.store_id asc
             ),
             eav_datetime AS (
                 SELECT
@@ -234,6 +240,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$categoryDatetime} eavdt
                 INNER JOIN {$eavAttribute} ea ON eavdt.attribute_id = ea.attribute_id
                 GROUP BY eavdt.entity_id
+                ORDER BY ea.attribute_code asc, eavdt.store_id asc
             ),
             eav_int AS (
                 SELECT
@@ -245,6 +252,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$categoryInt} eavi
                 INNER JOIN {$eavAttribute} ea ON eavi.attribute_id = ea.attribute_id
                 GROUP BY eavi.entity_id
+                ORDER BY ea.attribute_code asc, eavi.store_id asc
             ),
             eav_text AS (
                 SELECT
@@ -256,6 +264,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$categoryText} eavt
                 INNER JOIN {$eavAttribute} ea ON eavt.attribute_id = ea.attribute_id
                 GROUP BY eavt.entity_id
+                ORDER BY ea.attribute_code asc, eavt.store_id asc
             ),
             eav_varchar AS (
                 SELECT
@@ -267,6 +276,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$categoryVarchar} eavv
                 INNER JOIN {$eavAttribute} ea ON eavv.attribute_id = ea.attribute_id
                 GROUP BY eavv.entity_id
+                ORDER BY ea.attribute_code asc, eavv.store_id asc
             )
         SELECT
             e.*,
@@ -323,6 +333,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$customerDecimal} eavd
                 INNER JOIN {$eavAttribute} ea ON eavd.attribute_id = ea.attribute_id
                 GROUP BY eavd.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_datetime AS (
                 SELECT
@@ -334,6 +345,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$customerDatetime} eavdt
                 INNER JOIN {$eavAttribute} ea ON eavdt.attribute_id = ea.attribute_id
                 GROUP BY eavdt.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_int AS (
                 SELECT
@@ -345,6 +357,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$customerInt} eavi
                 INNER JOIN {$eavAttribute} ea ON eavi.attribute_id = ea.attribute_id
                 GROUP BY eavi.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_text AS (
                 SELECT
@@ -356,6 +369,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$customerText} eavt
                 INNER JOIN {$eavAttribute} ea ON eavt.attribute_id = ea.attribute_id
                 GROUP BY eavt.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_varchar AS (
                 SELECT
@@ -367,6 +381,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$customerVarchar} eavv
                 INNER JOIN {$eavAttribute} ea ON eavv.attribute_id = ea.attribute_id
                 GROUP BY eavv.entity_id
+                ORDER BY ea.attribute_code asc
             )
         SELECT
             e.*,
@@ -423,6 +438,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$addressDecimal} eavd
                 INNER JOIN {$eavAttribute} ea ON eavd.attribute_id = ea.attribute_id
                 GROUP BY eavd.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_datetime AS (
                 SELECT
@@ -434,6 +450,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$addressDatetime} eavdt
                 INNER JOIN {$eavAttribute} ea ON eavdt.attribute_id = ea.attribute_id
                 GROUP BY eavdt.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_int AS (
                 SELECT
@@ -445,6 +462,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$addressInt} eavi
                 INNER JOIN {$eavAttribute} ea ON eavi.attribute_id = ea.attribute_id
                 GROUP BY eavi.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_text AS (
                 SELECT
@@ -456,6 +474,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$addressText} eavt
                 INNER JOIN {$eavAttribute} ea ON eavt.attribute_id = ea.attribute_id
                 GROUP BY eavt.entity_id
+                ORDER BY ea.attribute_code asc
             ),
             eav_varchar AS (
                 SELECT
@@ -467,6 +486,7 @@ class CreateEavDebugViews implements SchemaPatchInterface
                 FROM {$addressVarchar} eavv
                 INNER JOIN {$eavAttribute} ea ON eavv.attribute_id = ea.attribute_id
                 GROUP BY eavv.entity_id
+                ORDER BY ea.attribute_code asc
             )
         SELECT
             e.*,
