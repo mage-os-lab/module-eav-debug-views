@@ -1,0 +1,32 @@
+{
+    "name": "mage-os/module-eav-debug-views",
+    "description": "Database views to aggregate EAV entity data for easier data analysis.",
+    "type": "magento2-module",
+    "license": [
+        "AFL-3.0",
+        "OSL-3.0"
+    ],
+    "require": {
+        "magento/framework": ">=103.0.0",
+        "magento/module-eav": "*",
+        "magento/module-catalog": "*",
+        "magento/module-customer": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageOS\\EavDebugViews\\": ""
+        }
+    },
+    "keywords": [
+        "magento 2",
+        "magento2",
+        "mage-os",
+        "eav",
+        "debug",
+        "developer",
+        "database views"
+    ]
+}
