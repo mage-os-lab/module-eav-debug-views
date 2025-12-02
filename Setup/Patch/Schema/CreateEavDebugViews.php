@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 /**
@@ -508,22 +507,37 @@ class CreateEavDebugViews implements SchemaPatchInterface
         $sql = <<<SQL
         CREATE OR REPLACE VIEW {$devProductAttribute} AS
         SELECT
-            eav.*,
+            eav.attribute_code,
+            eav.backend_type,
+            eav.frontend_input,
+            eav.frontend_label,
+            eav.is_required,
+            eav.is_user_defined,
+            eav.is_unique,
+            eav.default_value,
             cav.*,
+            eav.entity_type_id,
+            eav.attribute_model,
+            eav.backend_model,
+            eav.backend_table,
+            eav.frontend_model,
+            eav.frontend_class,
+            eav.source_model,
+            eav.note,
             JSON_ARRAYAGG(
                 JSON_OBJECT(
-                    'attribute_set_id', aea.attribute_set_id,
+                    'attribute_set_id', eea.attribute_set_id,
                     'attribute_set_name', eas.attribute_set_name,
-                    'attribute_group_id', aea.attribute_group_id,
+                    'attribute_group_id', eea.attribute_group_id,
                     'attribute_group_name', eag.attribute_group_name,
-                    'sort_order', aea.sort_order
+                    'sort_order', eea.sort_order
                 )
             ) AS attribute_sets
         FROM {$eavAttribute} eav
         INNER JOIN {$catalogEavAttribute} cav ON eav.attribute_id = cav.attribute_id
-        LEFT JOIN {$eavEntityAttribute} aea ON eav.attribute_id = aea.attribute_id
-        LEFT JOIN {$eavAttributeSet} eas ON aea.attribute_set_id = eas.attribute_set_id
-        LEFT JOIN {$eavAttributeGroup} eag ON aea.attribute_group_id = eag.attribute_group_id
+        LEFT JOIN {$eavEntityAttribute} eea ON eav.attribute_id = eea.attribute_id
+        LEFT JOIN {$eavAttributeSet} eas ON eea.attribute_set_id = eas.attribute_set_id
+        LEFT JOIN {$eavAttributeGroup} eag ON eea.attribute_group_id = eag.attribute_group_id
         GROUP BY eav.attribute_id
         ORDER BY eav.attribute_code
         SQL;
