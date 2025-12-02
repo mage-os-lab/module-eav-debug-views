@@ -1,4 +1,4 @@
-# MageOS EAV Debug Views
+# Mage-OS EAV Debug Views
 
 Developer utility module for Magento 2.4.x that creates database views aggregating EAV entity data with attribute values in JSON format.
 
