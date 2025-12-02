@@ -38,6 +38,8 @@ Combines `catalog_product_entity` with all EAV attributes aggregated as JSON.
 - All `catalog_product_entity` columns (entity_id, sku, type_id, etc.)
 - `eav_attributes` (JSON) - All EAV attribute values from decimal, datetime, int, text, varchar tables
 
+<img width="972" height="230" alt="2025-12-02_134111" src="https://github.com/user-attachments/assets/722bdd36-0d0c-4ee8-b586-baaec3927c70" />
+
 **Example Query:**
 ```sql
 SELECT
@@ -65,6 +67,12 @@ WHERE entity_id = 1;
 
 Combines `catalog_category_entity` with EAV attributes.
 
+**Columns:**
+- All `catalog_category_entity` columns (entity_id, path, level, etc.)
+- `eav_attributes` (JSON) - All EAV attribute values from decimal, datetime, int, text, varchar tables
+
+<img width="942" height="230" alt="2025-12-02_133915" src="https://github.com/user-attachments/assets/4b18f9bc-5785-416d-8f87-cbba207a6f60" />
+
 **Example Query:**
 ```sql
 SELECT
@@ -82,6 +90,12 @@ WHERE level = 2;
 
 Combines `customer_entity` with EAV attributes.
 
+**Columns:**
+- All `customer_entity` columns (entity_id, firstname, lastname, email, etc.)
+- `eav_attributes` (JSON) - All EAV attribute values from decimal, datetime, int, text, varchar tables
+
+<img width="1614" height="121" alt="2025-12-02_133737" src="https://github.com/user-attachments/assets/6edaa2ab-71fa-4abf-b85b-aec1cbd27c7e" />
+
 **Example Query:**
 ```sql
 SELECT
@@ -98,6 +112,12 @@ WHERE email LIKE '%@example.com';
 
 Combines `customer_address_entity` with EAV attributes.
 
+**Columns:**
+- All `customer_address_entity` columns (entity_id, firstname, lastname, street, city, etc.)
+- `eav_attributes` (JSON) - All EAV attribute values from decimal, datetime, int, text, varchar tables
+
+<img width="1350" height="100" alt="2025-12-02_134001" src="https://github.com/user-attachments/assets/8e06aa3b-0705-4d44-b251-99faa8157b47" />
+
 **Example Query:**
 ```sql
 SELECT
@@ -110,9 +130,17 @@ FROM dev_address
 WHERE parent_id = 1;
 ```
 
-### 5. dev_eav_attributes
+### 5. dev_product_attribute
 
-Quick reference for attribute metadata without joins.
+Quick reference for product attribute metadata.
+
+**Columns:**
+- All `eav_attribute` columns (attribute_id, attribute_code, etc.)
+- All `catalog_eav_attribute` columns (is_searchable, is_filterable, used_in_product_listing, etc.)
+- `attribute_sets` (JSON) - All attribute sets and groups the attribute is assigned to, including IDs, names, and sort order.
+- _@TODO: Add `eav_options` with all option IDs and values for DB-stored `select` and `multiselect`-type attributes._
+
+<img width="1167" height="163" alt="2025-12-02_134337" src="https://github.com/user-attachments/assets/aaa3c3bc-917a-4fbf-8e7a-f6eefb9bc4e1" />
 
 **Example Query:**
 ```sql
@@ -123,9 +151,10 @@ SELECT
     frontend_input,
     is_filterable,
     is_searchable,
-    sort_order,
+    position,
     attribute_sets
-FROM dev_eav_attributes
+FROM dev_product_attribute
+WHERE is_filterable=1
 ORDER BY attribute_code;
 ```
 
@@ -157,6 +186,8 @@ SELECT
 FROM dev_product
 WHERE entity_id = 1;
 ```
+
+For technical reasons, we can't sort attributes alphabetically. Scoped values for an attribute may appear anywhere within the JSON. (MySQL does not support sorting values within `JSON_OBJECTAGG(...)` in `ONLY_FULL_GROUP_BY` mode.)
 
 ## Performance Considerations
 
