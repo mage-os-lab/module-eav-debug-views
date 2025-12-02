@@ -24,7 +24,7 @@ Developer utility module for Magento 2.4.x that creates database views aggregati
 ## Installation
 
 ```bash
-composer require --dev mage-os/eav-debug-views
+composer require --dev mage-os/module-eav-debug-views
 bin/magento setup:upgrade
 ```
 
