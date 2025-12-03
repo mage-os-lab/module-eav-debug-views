@@ -245,16 +245,15 @@ WHERE sku = 'problematic-sku';
 SELECT entity_id, sku,
        JSON_EXTRACT(eav_attributes, '$.status') as status
 FROM dev_product
-HAVING status = 2;  -- Disabled
+HAVING status = 2;
 ```
 
 ### Attribute Discovery
 ```sql
--- What attributes exist for products?
+-- What custom attributes exist for products?
 SELECT attribute_code, frontend_input, is_required
-FROM dev_eav_attributes
-WHERE entity_type_code = 'catalog_product'
-  AND is_user_defined = 1;
+FROM dev_product_attribute
+WHERE is_user_defined = 1;
 ```
 
 ### Category Hierarchy Analysis
